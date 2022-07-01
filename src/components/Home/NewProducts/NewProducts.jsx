@@ -38,7 +38,7 @@ export default function NewProducts() {
                 index < 8 && (
                   <div className="col-md-3 mx-auto">
                     <Link
-                      to={"/detail-product/" + value.id}
+                      to={`/detail-product/${value.id}`}
                       style={{ textDecoration: "none" }}
                     >
                       <div className="card">

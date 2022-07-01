@@ -39,7 +39,7 @@ export default function ListAll() {
             {data.data.map((value) => (
               <div className="col-md-3 mx-auto">
                 <Link
-                  to={"/detail-product/" + value.id}
+                  to={`/detail-product/${value.id}`}
                   params={{ test: "test" }}
                   style={{ textDecoration: "none" }}
                 >

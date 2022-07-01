@@ -27,7 +27,10 @@ export default function ComputerCategory() {
             <h1 className="new-product">Computer</h1>
             {data.data.map((value) => (
               <div className="col-md-3 mx-auto">
-                <Link to="/detail-product" style={{ textDecoration: "none" }}>
+                <Link
+                  to={"/detail-product/" + value.id}
+                  style={{ textDecoration: "none" }}
+                >
                   <div className="card">
                     <div className="card-body">
                       <img

@@ -18,7 +18,7 @@ export default function AllCategory() {
           <div className="row">
             <h1 className="new-product">All Category</h1>
             {data.data.map((value, index) => (
-              <div className="col-md-3 mx-auto mt-4">
+              <div className="col-md-4 mx-auto mt-4">
                 <Link
                   to={"/" + value.attributes.name}
                   style={{ textDecoration: "none" }}

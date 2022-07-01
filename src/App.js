@@ -18,8 +18,13 @@ import Smarthome from "./pages/categories/smarthome/Smarthome";
 import SmartTv from "./pages/categories/smartTv/SmartTv";
 import Smartwatch from "./pages/categories/smartwatch/Smartwatch";
 import AllCategory from "./pages/all-category/AllCategory";
+import { AuthContext } from "./utils/context/AuthContext";
+import { useContext } from "react";
 
 function App() {
+  const { currentUser } = useContext(AuthContext);
+  console.log(currentUser);
+
   return (
     <div className="App">
       <BrowserRouter>

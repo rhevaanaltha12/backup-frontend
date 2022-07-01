@@ -1,10 +1,49 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import Image from "../../../assets/pic1.png";
 import "./Login.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../../../components/Home/Navbar/Navbar";
 import Footer from "../../../components/Home/Footer/Footer";
+import axios from "axios";
+import { AuthContext } from "../../../utils/context/AuthContext";
 export default function Login() {
+  const [identifier, setIdentifier] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
+  const { dispatch } = useContext(AuthContext);
+
+  const identifierOnChange = (e) => {
+    setIdentifier(e.target.value);
+  };
+  const passwordOnChange = (e) => {
+    setPassword(e.target.value);
+  };
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    axios
+      .post("http://localhost:1337/api/auth/local", {
+        identifier: identifier,
+        password: password,
+      })
+      .then((response) => {
+        // localStorage.setItem("data", response.data);
+        // console.log(response.data);
+        const user = response.data;
+        dispatch({
+          type: "LOGIN",
+          payload: user,
+        });
+        alert("berhasil login");
+        navigate("/");
+      })
+      .catch((err) => {
+        console.log(err);
+        alert("login gagal");
+      });
+  };
+
   return (
     <div>
       <Navbar />
@@ -22,7 +61,7 @@ export default function Login() {
                       <div className="card-title">
                         Belanja kebutuhan utama, menjadi lebih mudah
                       </div>
-                      <form>
+                      <form onSubmit={handleLogin}>
                         <div className="mb-3">
                           <label
                             for="exampleInputEmail1"
@@ -35,6 +74,7 @@ export default function Login() {
                             className="form-control"
                             id="exampleInputEmail1"
                             aria-describedby="emailHelp"
+                            onChange={identifierOnChange}
                           />
                         </div>
                         <div className="mb-3">
@@ -48,6 +88,7 @@ export default function Login() {
                             type="password"
                             className="form-control"
                             id="exampleInputPassword1"
+                            onChange={passwordOnChange}
                           />
                         </div>
                         <button
