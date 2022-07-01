@@ -1,0 +1,24 @@
+.navbar .navbar-nav .nav-link {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #0c0d36;
+  margin-left: 15px;
+}
+
+.navbar .navbar-nav .nav-link:hover {
+  color: #ff5053;
+}
+
+.navbar .navbar-nav .btn-primary {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #ffffff;
+  background-color: #391c99;
+}
+/*# sourceMappingURL=Navbar.css.map */

@@ -1,0 +1,102 @@
+#cart {
+  padding-top: 30px;
+}
+
+#cart .test-container .test-table {
+  border-color: red !important;
+}
+
+#cart .test-container .table-row {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  color: #0c0d36;
+}
+
+#cart .test-container .table-body {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  color: #0c0d36;
+}
+
+#cart .test-container .table-body .btn-primary {
+  background: #ff5053;
+  border-radius: 6px;
+  border: none;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  padding: 10px 17px;
+  color: #ffffff;
+}
+
+#cart .test-container .table-body .btn-primary:hover {
+  background: #df7879;
+}
+
+#cart form .shipping-details {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  color: #0c0d36;
+  margin-top: 56px;
+}
+
+#cart form .form-control {
+  background: #f3f3f3;
+  border-radius: 8px;
+}
+
+#cart form .form-label {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  color: #0c0d36;
+}
+
+#cart form .payment-price {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  color: #0c0d36;
+}
+
+#cart form .payment-title {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  color: #979797;
+}
+
+#cart form .payment-total {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  color: #358155;
+}
+
+#cart form .btn-checkout {
+  background: #358155;
+  border-radius: 6px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  color: #ffffff;
+  padding: 10px 26px;
+  border: none;
+}
+
+#cart form .btn-checkout:hover {
+  background-color: #609d79;
+}
+/*# sourceMappingURL=Cart.css.map */

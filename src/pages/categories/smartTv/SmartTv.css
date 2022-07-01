@@ -1,0 +1,36 @@
+#smarttv-category .new-product {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  color: #0c0d36;
+  margin-bottom: 16px;
+}
+
+#smarttv-category .card {
+  margin-bottom: 26px;
+  border: none;
+}
+
+#smarttv-category .card:hover {
+  background: #f4f4f4;
+  border-radius: 8px;
+}
+
+#smarttv-category .card .card-body .card-title {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  color: #0c0d36;
+  margin-top: 12px;
+}
+
+#smarttv-category .card .card-body .card-price {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  color: #ff5053;
+}
+/*# sourceMappingURL=SmartTv.css.map */

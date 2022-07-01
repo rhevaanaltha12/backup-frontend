@@ -1,0 +1,47 @@
+#detail {
+  margin-top: 30px;
+}
+
+#detail .card {
+  border: none;
+}
+
+#detail .card .card-body .card-title {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  color: #0c0d36;
+  margin-bottom: 5px;
+}
+
+#detail .card .card-body .card-price {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  color: #ff5053;
+  margin-bottom: 9px;
+}
+
+#detail .card .card-body .card-description {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  color: #525252;
+  margin-bottom: 20px;
+}
+
+#detail .card .card-body .btn-checkout {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  color: #ffffff;
+  background-color: #ff5053;
+  padding: 11px 59px;
+  width: 100%;
+  border: none;
+}
+/*# sourceMappingURL=Detail.css.map */

@@ -1,0 +1,67 @@
+#register {
+  padding-top: 30px;
+}
+
+#register .card {
+  border: none;
+}
+
+#register .card .card-body .card-title {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 28px;
+  margin-bottom: 68px;
+  color: #0c0d36;
+}
+
+#register .card .card-body form .form-label {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  /* identical to box height */
+  color: #0c0d36;
+}
+
+#register .card .card-body form .form-control {
+  background: #f3f3f3;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+#register .card .card-body form .btn-register {
+  background: #391c99;
+  border-radius: 6px;
+  width: 100%;
+  border: none;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  margin-bottom: 16px;
+  color: #ffffff;
+}
+
+#register .card .card-body form .btn-register:hover {
+  background: #220289;
+}
+
+#register .card .card-body form .btn-signin {
+  background: #f3f3f3;
+  border-radius: 6px;
+  width: 100%;
+  border: none;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  color: #bbbbbb;
+}
+
+#register .card .card-body form .btn-signin:hover {
+  background: #d4d4d4;
+  color: #fff;
+}
+/*# sourceMappingURL=Register.css.map */

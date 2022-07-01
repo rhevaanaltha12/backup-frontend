@@ -1,0 +1,29 @@
+#trend-categories {
+  margin-bottom: 60px;
+}
+
+#trend-categories .trend-title {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  margin-top: 30px;
+  color: #0c0d36;
+  margin-bottom: 16px;
+}
+
+#trend-categories .card {
+  border: none;
+  background: #f4f4f4;
+  border-radius: 8px;
+}
+
+#trend-categories .card .card-body .card-title {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  color: #0c0d36;
+  margin-top: 12px;
+}
+/*# sourceMappingURL=TrendCategories.css.map */

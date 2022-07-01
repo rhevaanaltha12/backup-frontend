@@ -1,0 +1,32 @@
+#customer-review .review-text {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  color: #0c0d36;
+  margin-top: 30px;
+  margin-bottom: 16px;
+}
+
+#customer-review .card {
+  margin-bottom: 16px;
+  border: none;
+}
+
+#customer-review .card .card-body .review-name {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  color: #0c0d36;
+  margin-bottom: 6px;
+}
+
+#customer-review .card .card-body .review-description {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  color: #525252;
+}
+/*# sourceMappingURL=CustomerReview.css.map */
