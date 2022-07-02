@@ -225,19 +225,15 @@ export default function Cart() {
               </div>
               <div className="shipping-details">Payment Informations</div>
               <div className="col-md-2">
-                <div className="payment-price">$10</div>
-                <div className="payment-title">Country Tax</div>
+                <div className="payment-price">Rp{response.data && response.data[0].attributes.products_price}</div>
+                <div className="payment-title">Harga Produk</div>
               </div>
               <div className="col-md-2">
-                <div className="payment-price">$280</div>
-                <div className="payment-title">Product Insurance</div>
-              </div>
-              <div className="col-md-2">
-                <div className="payment-price">$580</div>
+                <div className="payment-price">Rp{response.data && response.data[0].attributes.shipping_fee}</div>
                 <div className="payment-title">Ship to Jakarta</div>
               </div>
               <div className="col-md-2">
-                <div className="payment-total">$392,409</div>
+                <div className="payment-total">Rp{response.data && response.data[0].attributes.total}</div>
                 <div className="payment-title">Total</div>
               </div>
               <div className="col-md-4">
