@@ -31,8 +31,8 @@ export default function Cart() {
   const headers = {
     headers: {
       Authorization: `Bearer ${jwt}`,
-    }
-  }
+    },
+  };
 
   const navigate = useNavigate();
 
@@ -102,19 +102,15 @@ export default function Cart() {
         address,
         province: province,
         city,
-        regency: '',
+        regency: "",
         zip_code: postalCode,
         country,
-        phone_number: phoneNumber
-    }
+        phone_number: phoneNumber,
+      },
     };
 
     axios
-      .post(
-        "http://localhost:1337/api/carts/order",
-        shippingData,
-headers
-      )
+      .post("http://localhost:1337/api/carts/order", shippingData, headers)
       .then((respon) => {
         console.log(respon);
         const transactionId = respon.data.data.id;
@@ -305,12 +301,9 @@ headers
               </div>
               <div className="col-md-4">
                 {/* <Link to="/success-transaction"> */}
-                  <button
-                    className="btn btn-primary btn-checkout"
-                    type="submit"
-                  >
-                    Checkout Now
-                  </button>
+                <button className="btn btn-primary btn-checkout" type="submit">
+                  Checkout Now
+                </button>
                 {/* </Link> */}
               </div>
             </form>

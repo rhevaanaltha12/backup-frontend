@@ -21,6 +21,7 @@ import AllCategory from "./pages/all-category/AllCategory";
 import PaymentSuccess from "./pages/cart/payment-success/Success";
 import { AuthContext } from "./utils/context/AuthContext";
 import { useContext } from "react";
+import History from "./pages/history/History";
 
 function App() {
   const { currentUser } = useContext(AuthContext);
@@ -33,6 +34,7 @@ function App() {
           <Route path="/login" element={<Login />}></Route>
           <Route path="/register" element={<Register />}></Route>
           <Route path="/success" element={<Success />}></Route>
+          <Route path="/history" element={<History />}></Route>
           <Route
             path="/success-transaction/:id"
             element={<CartSuccess />}

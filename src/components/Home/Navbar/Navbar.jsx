@@ -57,9 +57,12 @@ export default function Navbar() {
               <Link className="nav-link" to={"/categories"}>
                 Categories
               </Link>
-              <a className="nav-link" href="#">
-                Reward
-              </a>
+              <Link className="nav-link active" aria-current="page" to="/cart">
+                Cart
+              </Link>
+              <Link className="nav-link" to={"/history"}>
+                History
+              </Link>
               {!isLogin && (
                 <div className="navbar-nav">
                   <Link className="nav-link" to="/register">
