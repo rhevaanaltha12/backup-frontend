@@ -25,7 +25,6 @@ const rows = [
   createData(Images3, "Coffee Holder", "$13,492", "Remove"),
 ];
 
-
 export default function Cart() {
   const storage = JSON.parse(localStorage.getItem("user"));
   const { jwt } = storage;
@@ -33,36 +32,36 @@ export default function Cart() {
   const [response, setResponse] = useState([]);
 
   useEffect(() => {
-
     const fetchData = async () => {
-      const res = await axios
-          .get("http://localhost:1337/api/carts?populate[cart_items][populate][0]=product&populate[cart_items][populate][product][fields][0]=price&populate[cart_items][populate][product][fields][1]=name&populate[cart_items][populate][product][fields][2]=image", {
-            headers: {
-              Authorization: `Bearer ${jwt}`
-            }
-          })
-          // .then((response) => {
-          //   // localStorage.setItem("data", response.data);
-          //   // console.log(response.data)
-          //   setResponse(response);
-            
-          // })
-          // .catch((err) => {
-          //   console.log(err);
-          // });
+      const res = await axios.get(
+        "http://localhost:1337/api/carts?populate[cart_items][populate][0]=product&populate[cart_items][populate][product][fields][0]=price&populate[cart_items][populate][product][fields][1]=name&populate[cart_items][populate][product][fields][2]=image",
+        {
+          headers: {
+            Authorization: `Bearer ${jwt}`,
+          },
+        }
+      );
+      // .then((response) => {
+      //   // localStorage.setItem("data", response.data);
+      //   // console.log(response.data)
+      //   setResponse(response);
+
+      // })
+      // .catch((err) => {
+      //   console.log(err);
+      // });
       const cartItems = res.data.data[0].attributes.cart_items.data;
       console.log(cartItems);
       setResponse(res.data);
-    }
+    };
 
     fetchData();
-  }, [])
+  }, []);
 
-    
-  console.log(response)
+  console.log(response);
 
   // const { loading, error, data } = useFetch(
-    // 'http://localhost:1337/api/carts');
+  // 'http://localhost:1337/api/carts');
   return (
     <div>
       <Navbar />
@@ -90,36 +89,41 @@ export default function Cart() {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {response.data && response.data[0].attributes.cart_items.data.map((row) => {
-                    const product = row.attributes.product.data;
-                    return (
-                    <TableRow
-                      key={product.attributes.name}
-                      sx={{
-                        "&:last-child td, &:last-child th": { border: 0 },
-                      }}
-                    >
-                      <TableCell
-                        className="table-body"
-                        component="th"
-                        scope="row"
-                      >
-                        <img src={product.attributes.image} alt="" />
-                      </TableCell>
-                      <TableCell className="table-body" align="right">
-                        {product.attributes.name}
-                      </TableCell>
-                      <TableCell className="table-body" align="right">
-                        Rp{product.attributes.price}
-                      </TableCell>
-                      <TableCell className="table-body" align="right">
-                        <button className="btn btn-primary" type="button">
-                          Remove
-                        </button>
-                      </TableCell>
-                    </TableRow>
-                  )
-                  })}
+                  {response.data &&
+                    response.data[0].attributes.cart_items.data.map((row) => {
+                      const product = row.attributes.product.data;
+                      return (
+                        <TableRow
+                          key={product.attributes.name}
+                          sx={{
+                            "&:last-child td, &:last-child th": { border: 0 },
+                          }}
+                        >
+                          <TableCell
+                            className="table-body"
+                            component="th"
+                            scope="row"
+                          >
+                            <img
+                              src={product.attributes.image}
+                              style={{ width: "25%" }}
+                              alt=""
+                            />
+                          </TableCell>
+                          <TableCell className="table-body" align="right">
+                            {product.attributes.name}
+                          </TableCell>
+                          <TableCell className="table-body" align="right">
+                            Rp{product.attributes.price}
+                          </TableCell>
+                          <TableCell className="table-body" align="right">
+                            <button className="btn btn-primary" type="button">
+                              Remove
+                            </button>
+                          </TableCell>
+                        </TableRow>
+                      );
+                    })}
                 </TableBody>
               </Table>
             </TableContainer>

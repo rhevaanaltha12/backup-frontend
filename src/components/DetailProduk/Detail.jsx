@@ -1,10 +1,11 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Image from "../../assets/Detail.png";
 import useFetch from "../../utils/useFetch";
 import "./Detail.css";
 export default function Detail() {
+  const navigate = useNavigate();
   const { id } = useParams();
   const [produk, setProduk] = useState({});
   const storage = JSON.parse(localStorage.getItem("user"));
@@ -38,8 +39,8 @@ export default function Detail() {
       )
       .then((response) => {
         console.log(response);
-
         alert("Success");
+        navigate("/cart");
       })
       .catch(function (err) {
         console.log(err);
