@@ -31,6 +31,32 @@ export default function Cart() {
 
   const [response, setResponse] = useState([]);
 
+  const [address, setAddress] = useState("");
+  const [province, setProvince] = useState("");
+  const [city, setCity] = useState("");
+  const [postalCode, setPostalCode] = useState("");
+  const [country, setCountry] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+
+  const addressOnChange = (e) => {
+    setAddress(e.target.value);
+  };
+  const provinceOnChange = (e) => {
+    setProvince(e.target.value);
+  };
+  const cityOnChange = (e) => {
+    setCity(e.target.value);
+  };
+  const postalCodeOnChange = (e) => {
+    setPostalCode(e.target.value);
+  };
+  const countryOnChange = (e) => {
+    setCountry(e.target.value);
+  };
+  const phoneNumberOnChange = (e) => {
+    setPhoneNumber(e.target.value);
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       const res = await axios.get(
@@ -59,6 +85,36 @@ export default function Cart() {
   }, []);
 
   console.log(response);
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    const shippingData = {
+      cart: response.data[0].id,
+      address: address,
+      province: province,
+      city: city,
+      postalCode: postalCode,
+      country: country,
+      phoneNumber: phoneNumber,
+    };
+
+    axios
+      .post(
+        "http://localhost:1337/api/carts/order",
+
+        shippingData
+      )
+      .then((respon) => {
+        console.log(respon);
+
+        alert("Success");
+      })
+      .catch(function (error) {
+        console.log(error);
+
+        alert("Failure");
+      });
+  };
 
   // const { loading, error, data } = useFetch(
   // 'http://localhost:1337/api/carts');
@@ -127,9 +183,9 @@ export default function Cart() {
                 </TableBody>
               </Table>
             </TableContainer>
-            <form className="row g-3">
+            <form onSubmit={submitHandler} className="row g-3">
               <div className="shipping-details">Shipping Details</div>
-              <div className="col-md-6">
+              <div className="col-md-4">
                 <label for="inputAddress" className="form-label">
                   Address
                 </label>
@@ -138,35 +194,9 @@ export default function Cart() {
                   className="form-control"
                   id="inputAddress"
                   placeholder="Contoh: JL.Burung"
+                  onChange={addressOnChange}
                 />
               </div>
-              <div className="col-md-6">
-                <label for="inputAddress2" className="form-label">
-                  Address 2
-                </label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="inputAddress2"
-                  placeholder="Contoh: Blok B2 No. 34"
-                />
-              </div>
-              {/* <div className="col-md-6">
-                <label for="inputEmail4" className="form-label">
-                  Email
-                </label>
-                <input type="email" className="form-control" id="inputEmail4" />
-              </div>
-              <div className="col-md-6">
-                <label for="inputPassword4" className="form-label">
-                  Password
-                </label>
-                <input
-                  type="password"
-                  className="form-control"
-                  id="inputPassword4"
-                />
-              </div> */}
 
               <div className="col-md-4">
                 <label for="inputCity" className="form-label">
@@ -177,6 +207,7 @@ export default function Cart() {
                   className="form-control"
                   id="inputCity"
                   placeholder="Contoh: DKI Jakarta"
+                  onChange={provinceOnChange}
                 />
               </div>
               <div className="col-md-4">
@@ -188,6 +219,7 @@ export default function Cart() {
                   className="form-control"
                   id="inputCity"
                   placeholder="Contoh: Jakarta Timur"
+                  onChange={cityOnChange}
                 />
               </div>
               <div className="col-md-4">
@@ -199,9 +231,10 @@ export default function Cart() {
                   className="form-control"
                   id="inputZip"
                   placeholder="Contoh: 12345"
+                  onChange={postalCodeOnChange}
                 />
               </div>
-              <div className="col-md-6">
+              <div className="col-md-4">
                 <label for="inputCity" className="form-label">
                   Country
                 </label>
@@ -210,9 +243,10 @@ export default function Cart() {
                   className="form-control"
                   id="inputCity"
                   placeholder="Contoh: Indonesia"
+                  onChange={countryOnChange}
                 />
               </div>
-              <div className="col-md-6">
+              <div className="col-md-4">
                 <label for="inputCity" className="form-label">
                   Phone Number
                 </label>
@@ -221,19 +255,27 @@ export default function Cart() {
                   className="form-control"
                   id="inputCity"
                   placeholder="Contoh: 0812345678"
+                  onChange={phoneNumberOnChange}
                 />
               </div>
               <div className="shipping-details">Payment Informations</div>
               <div className="col-md-2">
-                <div className="payment-price">Rp{response.data && response.data[0].attributes.products_price}</div>
+                <div className="payment-price">
+                  Rp
+                  {response.data && response.data[0].attributes.products_price}
+                </div>
                 <div className="payment-title">Harga Produk</div>
               </div>
               <div className="col-md-2">
-                <div className="payment-price">Rp{response.data && response.data[0].attributes.shipping_fee}</div>
+                <div className="payment-price">
+                  Rp{response.data && response.data[0].attributes.shipping_fee}
+                </div>
                 <div className="payment-title">Ship to Jakarta</div>
               </div>
               <div className="col-md-2">
-                <div className="payment-total">Rp{response.data && response.data[0].attributes.total}</div>
+                <div className="payment-total">
+                  Rp{response.data && response.data[0].attributes.total}
+                </div>
                 <div className="payment-title">Total</div>
               </div>
               <div className="col-md-4">
