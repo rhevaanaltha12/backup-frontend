@@ -9,6 +9,7 @@ export default function Detail() {
   const [produk, setProduk] = useState({});
   const storage = JSON.parse(localStorage.getItem("user"));
   const { jwt } = storage;
+  const [item, setItem] = useState([]);
 
   const { loading, error, data } = useFetch(
     `http://localhost:1337/api/products/${id}`
@@ -18,9 +19,23 @@ export default function Detail() {
   console.log(data.data);
 
   const checkoutHandler = (e) => {
+    console.log(`JWT: ${jwt}`);
     e.preventDefault();
     axios
-      .post("http://localhost:1337/api/cart-items", data.data)
+      .post(
+        "http://localhost:1337/api/cart-items",
+        {
+          data: {
+            product: data.data.id,
+            count: 1,
+          },
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${jwt}`,
+          },
+        }
+      )
       .then((response) => {
         console.log(response);
 
