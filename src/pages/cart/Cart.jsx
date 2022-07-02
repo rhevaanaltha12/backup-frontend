@@ -10,7 +10,7 @@ import Images1 from "../../assets/image1.jpg";
 import Images2 from "../../assets/image2.jpg";
 import Images3 from "../../assets/image3.jpg";
 import Button from "@mui/material/Button";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Cart.css";
 import Navbar from "../../components/Home/Navbar/Navbar";
 import Footer from "../../components/Home/Footer/Footer";
@@ -28,9 +28,17 @@ const rows = [
 export default function Cart() {
   const storage = JSON.parse(localStorage.getItem("user"));
   const { jwt } = storage;
+  const headers = {
+    headers: {
+      Authorization: `Bearer ${jwt}`,
+    }
+  }
+
+  const navigate = useNavigate();
 
   const [response, setResponse] = useState([]);
 
+  const [name, setName] = useState("");
   const [address, setAddress] = useState("");
   const [province, setProvince] = useState("");
   const [city, setCity] = useState("");
@@ -38,6 +46,9 @@ export default function Cart() {
   const [country, setCountry] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
 
+  const nameOnChange = (e) => {
+    setName(e.target.value);
+  };
   const addressOnChange = (e) => {
     setAddress(e.target.value);
   };
@@ -61,11 +72,7 @@ export default function Cart() {
     const fetchData = async () => {
       const res = await axios.get(
         "http://localhost:1337/api/carts?populate[cart_items][populate][0]=product&populate[cart_items][populate][product][fields][0]=price&populate[cart_items][populate][product][fields][1]=name&populate[cart_items][populate][product][fields][2]=image",
-        {
-          headers: {
-            Authorization: `Bearer ${jwt}`,
-          },
-        }
+        headers
       );
       // .then((response) => {
       //   // localStorage.setItem("data", response.data);
@@ -89,25 +96,31 @@ export default function Cart() {
   const submitHandler = (e) => {
     e.preventDefault();
     const shippingData = {
-      cart: response.data[0].id,
-      address: address,
-      province: province,
-      city: city,
-      postalCode: postalCode,
-      country: country,
-      phoneNumber: phoneNumber,
+      // cart: response.data[0].id,
+      data: {
+        name,
+        address,
+        province: province,
+        city,
+        regency: '',
+        zip_code: postalCode,
+        country,
+        phone_number: phoneNumber
+    }
     };
 
     axios
       .post(
         "http://localhost:1337/api/carts/order",
-
-        shippingData
+        shippingData,
+headers
       )
       .then((respon) => {
         console.log(respon);
+        const transactionId = respon.data.data.id;
 
         alert("Success");
+        navigate(`/success-transaction/${transactionId}`);
       })
       .catch(function (error) {
         console.log(error);
@@ -185,6 +198,18 @@ export default function Cart() {
             </TableContainer>
             <form onSubmit={submitHandler} className="row g-3">
               <div className="shipping-details">Shipping Details</div>
+              <div className="col-md-4">
+                <label for="inputName" className="form-label">
+                  Name
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="inputName"
+                  placeholder="Contoh: Rheva"
+                  onChange={nameOnChange}
+                />
+              </div>
               <div className="col-md-4">
                 <label for="inputAddress" className="form-label">
                   Address
@@ -279,14 +304,14 @@ export default function Cart() {
                 <div className="payment-title">Total</div>
               </div>
               <div className="col-md-4">
-                <Link to="/success-transaction">
+                {/* <Link to="/success-transaction"> */}
                   <button
                     className="btn btn-primary btn-checkout"
                     type="submit"
                   >
                     Checkout Now
                   </button>
-                </Link>
+                {/* </Link> */}
               </div>
             </form>
           </div>

@@ -1,0 +1,54 @@
+#success {
+  padding-top: 150px;
+  .card {
+    border: none;
+    .card-body {
+      .card-subtitle {
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 28px;
+        color: #0c0d36;
+        margin-top: 40px;
+        margin-bottom: 16px;
+      }
+      .card-title {
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        color: #525252;
+      }
+      .btn-dashboard {
+        margin-top: 57px;
+        width: 100%;
+        background: #391c99;
+        border-radius: 6px;
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        color: #ffffff;
+        border: none;
+        &:hover {
+          background: #220289;
+        }
+      }
+      .btn-shopping {
+        margin-top: 16px;
+        width: 100%;
+        background: #f3f3f3;
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        border: none;
+        color: #bbbbbb;
+        &:hover {
+          background: #d4d4d4;
+          color: #fff;
+        }
+      }
+    }
+  }
+}

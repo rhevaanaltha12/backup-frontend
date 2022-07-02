@@ -18,6 +18,7 @@ import Smarthome from "./pages/categories/smarthome/Smarthome";
 import SmartTv from "./pages/categories/smartTv/SmartTv";
 import Smartwatch from "./pages/categories/smartwatch/Smartwatch";
 import AllCategory from "./pages/all-category/AllCategory";
+import PaymentSuccess from "./pages/cart/payment-success/Success";
 import { AuthContext } from "./utils/context/AuthContext";
 import { useContext } from "react";
 
@@ -32,7 +33,10 @@ function App() {
           <Route path="/login" element={<Login />}></Route>
           <Route path="/register" element={<Register />}></Route>
           <Route path="/success" element={<Success />}></Route>
-          <Route path="/success-transaction" element={<CartSuccess />}></Route>
+          <Route
+            path="/success-transaction/:id"
+            element={<CartSuccess />}
+          ></Route>
           <Route path="/cart" element={<Cart />}></Route>
           <Route path="/" exact element={<Landing />}></Route>
           <Route path="/detail-product/:id" element={<DetailProduct />}></Route>
@@ -48,6 +52,7 @@ function App() {
           <Route path="/Smart%20TV" element={<SmartTv />}></Route>
           <Route path="/Smartwatch" element={<Smartwatch />}></Route>
           <Route path="/Categories" element={<AllCategory />}></Route>
+          <Route path="/payment-success" element={<PaymentSuccess />}></Route>
         </Routes>
       </BrowserRouter>
     </div>
@@ -55,4 +60,3 @@ function App() {
 }
 
 export default App;
-
